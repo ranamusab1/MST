@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Common CSS/JS includes -->
+    <title>Services - RMA Digital Solutions</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- AOS for Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --light-blue: #ADD8E6;
+            --white: #FFFFFF;
+            --dark: #1a1a1a;
+        }
+        [data-theme="dark"] {
+            --white: #1a1a1a;
+            --dark: #FFFFFF;
+            --light-blue: #4B9CD3;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--white);
+            color: var(--dark);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Navbar Fixes for Visibility */
+        .navbar {
+            background-color: var(--white) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-blue) !important;
+        }
+        .navbar-brand img {
+            filter: brightness(1); /* Ensure logo image is visible in both modes */
+        }
+        /* Light Mode: Dark links on white navbar bg */
+        .navbar-nav .nav-link {
+            color: var(--dark) !important;
+            transition: color 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+        /* Dark Mode: White links on dark navbar bg */
+        [data-theme="dark"] .navbar {
+            background-color: var(--dark) !important; /* Dark bg */
+        }
+        [data-theme="dark"] .navbar-nav .nav-link {
+            color: var(--white) !important; /* White text for contrast */
+        }
+        [data-theme="dark"] .navbar-nav .nav-link:hover {
+            color: var(--light-blue) !important;
+        }
+        [data-theme="dark"] .navbar-brand {
+            color: var(--light-blue) !important; /* Adjust brand color in dark mode */
+        }
+        [data-theme="dark"] .navbar-brand img {
+            filter: brightness(1.2); /* Slightly brighten logo in dark mode */
+        }
+        /* Hero Section (if used - ensure white text) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hero-bg.jpg') center/cover;
+            color: var(--white) !important;
+            padding: 150px 0;
+        }
+        .hero h1, .hero p {
+            color: var(--white) !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        /* Service Cards and Text Fixes */
+        .service-card, .project-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            background: var(--white) !important;
+            color: var(--dark) !important;
+        }
+        .service-card h5, .service-card p, .service-card i {
+            color: inherit !important; /* Inherit from parent for theme consistency */
+        }
+        .service-card .text-primary {
+            color: var(--primary-blue) !important; /* Icons in light mode */
+        }
+        .service-card:hover, .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        /* Dark Mode: Dark bg, white text for cards */
+        [data-theme="dark"] .service-card, [data-theme="dark"] .project-card {
+            background: var(--dark) !important;
+            color: var(--white) !important;
+        }
+        [data-theme="dark"] .service-card h5, [data-theme="dark"] .service-card p {
+            color: var(--white) !important;
+        }
+        [data-theme="dark"] .service-card .text-primary {
+            color: var(--light-blue) !important; /* Lighter blue for icons in dark mode */
+        }
+        /* Headings and Body Text Fixes (e.g., .heading and general h1/h2) */
+        .heading, h1, h2, h3, h5 {
+            color: var(--dark) !important;
+        }
+        [data-theme="dark"] .heading, [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h5 {
+            color: var(white) !important;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3); /* Subtle shadow for readability */
+        }
+        /* Specific Fix for .heading in Dark Mode (Higher Specificity for Contrast) */
+        [data-theme="dark"] .heading {
+            color: var(white) !important;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5) !important; /* Enhanced shadow for better contrast */
+        }
+        p {
+            color: var(--dark);
+        }
+        [data-theme="dark"] p {
+            color: var(--white);
+        }
+        /* Text Muted (if used) */
+        .text-muted {
+            color: #6c757d !important; /* Light gray in light mode */
+        }
+        [data-theme="dark"] .text-muted {
+            color: #adb5bd !important; /* Lighter gray in dark mode */
+        }
+        /* AOS-Animated Elements */
+        [data-aos] {
+            color: var(--dark);
+        }
+        [data-theme="dark"] [data-aos] {
+            color: var(--white);
+        }
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--white) !important;
+        }
+        .btn-primary:hover {
+            background-color: var(--light-blue);
+            border-color: var(--light-blue);
+            color: var(--dark) !important;
+        }
+        [data-theme="dark"] .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white) !important;
+        }
+        [data-theme="dark"] .btn-primary:hover {
+            background-color: var(--light-blue);
+            color: var(--dark) !important;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark); /* Adjust icon color */
+        }
+        [data-theme="dark"] .theme-toggle {
+            color: var(--white);
+        }
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 20px 0;
+        }
+        [data-theme="dark"] footer {
+            background-color: var(--primary-blue); /* Keep blue footer in dark mode */
+            color: var(--white);
+        }
+        footer a {
+            color: var(--light-blue) !important;
+        }
+        .chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--light-blue);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        [data-theme="dark"] .chat-btn {
+            background: var(--light-blue);
+            color: var(--dark); /* Adjust for dark mode if needed */
+        }
+        .heading {
+            padding-top: 120px !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="RMA Digital Solutions Logo" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="py-5">
+        <div class="container">
+            <h1 class="heading text-center mb-5" data-aos="fade-up">Our Services</h1>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up">
+                    <div class="card service-card h-100 text-center p-4">
+                        <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                        <h5>Web Development</h5>
+                        <p>We build responsive, scalable websites with cutting-edge frontend (HTML, CSS, JavaScript) and backend (ASP.NET, modern frameworks) solutions, tailored to boost your online presence.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card service-card h-100 text-center p-4">
+                        <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                        <h5>App Development</h5>
+                        <p>Create powerful Android and web applications with smooth cross-platform integration and intuitive designs, ensuring a top-notch user experience.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-card h-100 text-center p-4">
+                        <i class="fas fa-database fa-3x text-primary mb-3"></i>
+                        <h5>Database Design</h5>
+                        <p>Design and optimize secure databases using SQL Server, delivering high-performance and reliable data management for your business needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-card h-100 text-center p-4">
+                        <i class="fas fa-cogs fa-3x text-primary mb-3"></i>
+                        <h5>IT Consultancy & Automation</h5>
+                        <p>Offer expert guidance on system integration, automation, and digital transformation, helping you save costs and enhance operational efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="bg-primary text-white text-center py-4 mt-5">
+    <div class="container">
+        <p class="mb-2">Copyright © 2025 MT Innovate. All Rights Reserved.</p>
+        <p class="mb-2">Crafting innovative digital solutions for a smarter future.</p>
+        <div class="mb-2">
+            <a href="https://github.com/ranamusab1" class="text-white me-3" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="mailto:musabrana884@gmail.com" class="text-white me-3"><i class="fas fa-envelope"></i> Contact Us</a>
+            <a href="about.html" class="text-white me-3">About Us</a>
+            <a href="services.html" class="text-white">Services</a>
+        </div>
+        <p class="small">Follow us for updates: <a href="https://www.linkedin.com/posts/mtinnovate_mt-innovate-linkedin-activity-7379904942850998273-Mavp?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpWGvcBNuVzpm809HqitXkZce0AfwCHF6M" class="text-light">LinkedIn</a></p>
+    </div>
+</footer>
+
+    <!-- Common JS -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000 });
+        
+        // Dark/Light Mode Toggle
+        const toggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            const icon = toggle.querySelector('i');
+            icon.classList.replace('fa-moon', 'fa-sun'); // Icon change for dark mode
+        }
+        toggle?.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            // Update icon
+            const icon = toggle.querySelector('i');
+            if (theme === 'dark') {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+        
+        // Simple Team Slider (for Home/About) - Not used here but kept for consistency
+        function initSlider() {
+            const sliders = document.querySelectorAll('.team-slider');
+            sliders.forEach(slider => {
+                let current = 0;
+                const slides = slider.querySelectorAll('.slide');
+                setInterval(() => {
+                    slides[current].style.opacity = '0';
+                    current = (current + 1) % slides.length;
+                    slides[current].style.opacity = '1';
+                }, 3000);
+            });
+        }
+        initSlider();
+        
+        // Mock Chat Toggle (if chat button is added later)
+        const chatBtn = document.getElementById('chat-btn');
+        if (chatBtn) {
+            const chatModal = new bootstrap.Modal(document.getElementById('chat-modal'));
+            chatBtn.addEventListener('click', () => chatModal.show());
+        }
+    </script>
+</body>
+</html>
