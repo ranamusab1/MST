@@ -1,186 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Common CSS/JS includes here -->
-    <title>Portfolio - RMA Digital Solutions</title>
-    <!-- Bootstrap CSS -->
+    <title>Portfolio - MT Innovate</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- AOS for Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <style>
-        :root {
-            --primary-blue: #1E3A8A;
-            --light-blue: #ADD8E6;
-            --white: #FFFFFF;
-            --dark: #1a1a1a;
-        }
-        [data-theme="dark"] {
-            --white: #1a1a1a;
-            --dark: #FFFFFF;
-            --light-blue: #4B9CD3;
-        }
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--white);
-            color: var(--dark);
-            transition: background-color 0.3s, color 0.3s;
+            background-color: #1a1a1a;
+            color: #FFFFFF;
         }
-        /* Navbar Fixes for Visibility */
         .navbar {
-            background-color: var(--white) !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-blue) !important;
+            background-color: #000000 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
         .navbar-brand img {
-            filter: brightness(1); /* Ensure logo image is visible in both modes */
+            height: 50px;
         }
-        /* Light Mode: Dark links on white navbar bg */
         .navbar-nav .nav-link {
-            color: var(--dark) !important;
+            color: #FFFFFF !important;
             transition: color 0.3s;
         }
         .navbar-nav .nav-link:hover {
-            color: var(--primary-blue) !important;
-        }
-        /* Dark Mode: White links on dark navbar bg */
-        [data-theme="dark"] .navbar {
-            background-color: var(--dark) !important; /* Dark bg */
-        }
-        [data-theme="dark"] .navbar-nav .nav-link {
-            color: var(--white) !important; /* White text for contrast */
-        }
-        [data-theme="dark"] .navbar-nav .nav-link:hover {
-            color: var(--light-blue) !important;
-        }
-        [data-theme="dark"] .navbar-brand {
-            color: var(--light-blue) !important; /* Adjust brand color in dark mode */
-        }
-        [data-theme="dark"] .navbar-brand img {
-            filter: brightness(1.2); /* Slightly brighten logo in dark mode */
+            color: #ADD8E6 !important;
         }
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hero-bg.jpg') center/cover;
-            color: var(--white);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/portfolio.png') center/cover;
+            color: #FFFFFF;
             padding: 150px 0;
+            margin-top: 76px;
+            text-align: center;
         }
-        /* Project Cards and Text Fixes (Specific for Placeholder Projects) */
-        .service-card, .project-card {
-            transition: transform 0.3s, box-shadow 0.3s;
+        .hero h1 {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .case-study {
+            background: #2d2d2d;
+            color: #FFFFFF;
             border: none;
-            background: var(--white) !important;
-            color: var(--dark) !important;
+            transition: all 0.3s;
         }
-        .project-card h5, .project-card p, .project-card p.card-text {
-            color: inherit !important; /* Inherit from parent for theme consistency */
-        }
-        .service-card:hover, .project-card:hover {
+        .case-study:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        /* Dark Mode: Dark bg, white text for project cards (including placeholder p.card-text) */
-        [data-theme="dark"] .service-card, [data-theme="dark"] .project-card {
-            background: var(--dark) !important;
-            color: var(--white) !important;
-        }
-        [data-theme="dark"] .project-card h5, [data-theme="dark"] .project-card p, [data-theme="dark"] .project-card p.card-text {
-            color: var(--white) !important; /* White text for contrast in placeholders */
-        }
-        /* Headings and Body Text Fixes (e.g., .heading and general h1/h2/p) */
-        .heading, h1, h2, h3, h5 {
-            color: var(--dark) !important;
-        }
-        [data-theme="dark"] .heading, [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h5 {
-            color: var(white) !important;
-            text-shadow: 1px 1px 2px rgba(254, 254, 254, 0.3); /* Subtle shadow for readability */
-        }
-        /* Specific Fix for .heading in Dark Mode (Higher Specificity for Contrast) */
-        [data-theme="dark"] .heading, {
-            color: var(white) !important;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5) !important; /* Enhanced shadow for better contrast */
-        }
-        [data-theme="dark"] p.lead {
-            color: var(white) !important;
-            text-shadow: 1px 1px 2px rgba(254, 254, 254, 0.3); /* Subtle shadow for readability */
-        }
-        /* Specific Fix for the Lead Paragraph (p.lead) in Dark Mode */
-        [data-theme="dark"] p.lead {
-            color: var(white) !important;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5) !important;
-        }
-        p {
-            color: var(--dark);
-        }
-        [data-theme="dark"] p {
-            color: var(--white);
-        }
-        /* Text Muted (if used) */
-        .text-muted {
-            color: #6c757d !important; /* Light gray in light mode */
-        }
-        [data-theme="dark"] .text-muted {
-            color: #adb5bd !important; /* Lighter gray in dark mode */
-        }
-        /* AOS-Animated Elements */
-        [data-aos] {
-            color: var(--dark);
-        }
-        [data-theme="dark"] [data-aos] {
-            color: var(--white);
-        }
-        .btn-primary {
-            background-color: var(--primary-blue);
-            border-color: var(--primary-blue);
-        }
-        .btn-primary:hover {
-            background-color: var(--light-blue);
-            border-color: var(--light-blue);
-        }
-        .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
+            background-color: #000000;
+            color: #FFFFFF;
             padding: 20px 0;
         }
-        .chat-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--light-blue);
-            color: var(--dark);
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-        .heading {
-            padding-top: 120px !important;
-        }
     </style>
-
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="MT Innovate Logo" height="50">
-            </a>
+            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="MT Innovate Logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -190,139 +70,77 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="careers.html">Careers</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item"><button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Our Portfolio</h1>
+            <p class="lead mb-5">Showcasing our impact through innovative projects.</p>
+        </div>
+    </section>
+
     <section class="py-5">
         <div class="container">
-            <h1 class="heading text-center mb-5" data-aos="fade-up">Our Portfolio</h1>
-            <p class="text-center lead mb-5" data-aos="fade-up" data-aos-delay="100">Showcasing innovative solutions that drive real impact.</p>
-            
-            <!-- Featured PIA Project -->
-            <div class="row mb-5">
-                <div class="col-12" data-aos="fade-up">
-                    <div class="project-card p-4 border-start border-primary border-5">
-                        <div class="row align-items-center">
-                            <div class="col-md-4">
-                                <img src="images/pia-1.png" class="img-fluid rounded" alt="PIA Complaints Management System Screenshot 1" data-aos="zoom-in">
-                            </div>
-                            <div class="col-md-8">
-                                <h3 class="text-primary">Complaints Management System for Pakistan International Airlines (PIA)</h3>
-                                <p class="mb-3">A comprehensive enterprise system built for PIA's Award+ Members. Features include admin login, complaint categorization (Missing Miles, Nominee, Redemption, etc.), email services, filtering, and detailed tracking. Currently under approval by PIA governance.</p>
-                                <p><strong>Technologies:</strong> ASP.NET Web Forms 4.5, C#, SQL Server 2019, Bootstrap.</p>
-                                <div class="d-flex gap-3 flex-wrap">
-                                    <a href="https://github.com/ranamusab1/Customer-Managment-System" class="btn btn-primary" target="_blank">View on GitHub</a>
-                                    <a href="#" class="btn btn-outline-primary">Live Demo (Coming Soon)</a>
-                                </div>
-                                <div class="mt-3">
-                                    <img src="images/pia-2.png" class="img-fluid rounded" width="200" alt="PIA System Dashboard" style="max-width: 100%;">
-                                    <img src="images/pia-3.png" class="img-fluid rounded" width="200" alt="PIA Complaint Categorization" style="max-width: 100%;">
-                                    <img src="images/pia-4.png" class="img-fluid rounded" width="200" alt="PIA Email Service" style="max-width: 100%;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional Placeholder Projects -->
             <div class="row">
-                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card project-card h-100">
-                        <img src="images/sample-1.png" class="card-img-top" alt="E-Commerce Project">
-                        <div class="card-body">
-                            <h5 class="card-title">E-Commerce Web Platform</h5>
-                            <p class="card-text">A responsive online store with payment integration and inventory management.</p>
-                            <a href="#" class="btn btn-primary">View Details</a>
-                        </div>
+                <div class="col-md-6 mb-4" data-aos="fade-up">
+                    <div class="case-study text-center">
+                        <img src="images/pia-2.png" class="img-fluid rounded mb-3" alt="PIA System" style="max-width: 100%;">
+                        <h5>PIA Complaints Management System</h5>
+                        <p>Built for PIA's Award+ Members with admin login, categorization, and tracking. Tech: ASP.NET, C#, SQL Server.</p>
+                        <a href="https://github.com/ranamusab1/Customer-Managment-System" class="btn btn-sm btn-primary" target="_blank">View Project</a>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card project-card h-100">
-                        <img src="images/sample-2.jpg" class="card-img-top" alt="Mobile App Project">
-                        <div class="card-body">
-                            <h5 class="card-title">Mobile App Prototype</h5>
-                            <p class="card-text">Android app for task management with real-time notifications.</p>
-                            <a href="#" class="btn btn-primary">View Details</a>
-                        </div>
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="case-study text-center">
+                        <img src="images/Mobile-1.jpg" class="img-fluid rounded mb-3" alt="Client App" style="max-width: 100%;">
+                        <h5>Client Mobile App</h5>
+                        <p>Custom Android app increasing user engagement by 250%. Tech: Android Studio, Java.</p>
+                        <a href="#" class="btn btn-sm btn-primary" target="_blank">View Project</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mock Chat -->
-    <button id="chat-btn" class="chat-btn"><i class="fas fa-comments"></i></button>
-    <div class="modal fade" id="chat-modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>Chat Support</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center mb-3">
+                    <h5>MT Innovate</h5>
+                    <p>Where Innovation Meet Solution.</p>
                 </div>
-                <div class="modal-body">
-                    <p>Connect with us for instant support! (Mock - Email us at info@rmadigital.com)</p>
+                <div class="col-md-4 text-center mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-white">About Us</a></li>
+                        <li><a href="services.html" class="text-white">Services</a></li>
+                        <li><a href="portfolio.html" class="text-white">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center mb-3">
+                    <h5>Contact</h5>
+                    <p><i class="fas fa-envelope me-2"></i> <a href="mailto:musabrana884@gmail.com" class="text-white">musabrana884@gmail.com</a></p>
+                    <p><i class="fas fa-phone me-2"></i> +92-301-2290505</p>
+                    <div class="mt-2">
+                        <a href="https://github.com/ranamusab1" class="text-white me-3" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                        <a href="https://www.linkedin.com/company/mtinnovate/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BmAvYuIl7Sw6mX6OzdOZeWA%3D%3D" class="text-white"><i class="fab fa-linkedin fa-2x"></i></a>
+                    </div>
                 </div>
             </div>
+            <hr class="bg-white">
+            <p class="text-center mb-0">&copy; 2025 MT Innovate. All Rights Reserved.</p>
         </div>
-    </div>
+    </footer>
 
-    <!-- Footer -->
-<footer class="bg-primary text-white text-center py-4 mt-5">
-    <div class="container">
-        <p class="mb-2">Copyright © 2025 MT Innovate. All Rights Reserved.</p>
-        <p class="mb-2">Crafting innovative digital solutions for a smarter future.</p>
-        <div class="mb-2">
-            <a href="https://github.com/ranamusab1" class="text-white me-3" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            <a href="mailto:musabrana884@gmail.com" class="text-white me-3"><i class="fas fa-envelope"></i> Contact Us</a>
-            <a href="about.html" class="text-white me-3">About Us</a>
-            <a href="services.html" class="text-white">Services</a>
-        </div>
-        <p class="small">Follow us for updates: <a href="https://www.linkedin.com/posts/mtinnovate_mt-innovate-linkedin-activity-7379904942850998273-Mavp?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpWGvcBNuVzpm809HqitXkZce0AfwCHF6M" class="text-light">LinkedIn</a></p>
-    </div>
-</footer>
-
-    <!-- Common JS -->
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000 });
-        
-        // Dark/Light Mode Toggle
-        const toggle = document.getElementById('theme-toggle');
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        toggle?.addEventListener('click', () => {
-            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        });
-        
-        // Simple Team Slider (for Home/About)
-        function initSlider() {
-            const sliders = document.querySelectorAll('.team-slider');
-            sliders.forEach(slider => {
-                let current = 0;
-                const slides = slider.querySelectorAll('.slide');
-                setInterval(() => {
-                    slides[current].style.opacity = '0';
-                    current = (current + 1) % slides.length;
-                    slides[current].style.opacity = '1';
-                }, 3000);
-            });
-        }
-        initSlider();
-        
-        // Mock Chat Toggle
-        const chatBtn = document.getElementById('chat-btn');
-        const chatModal = new bootstrap.Modal(document.getElementById('chat-modal'));
-        chatBtn?.addEventListener('click', () => chatModal.show());
     </script>
 </body>
 </html>
