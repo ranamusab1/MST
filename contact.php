@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     file_put_contents('contacts.log', $log, FILE_APPEND);
     
     // Send email (configure SMTP in php.ini or use PHPMailer)
-    $to = 'info@rmadigital.com';
+    $to = 'mtinnovateofficial@gmail.com';
     $subject = 'New Contact Form Submission';
     $body = "Name: $name\nEmail: $email\nMessage: $message";
     $headers = "From: $email";
