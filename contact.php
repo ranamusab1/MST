@@ -1,45 +1,36 @@
 <?php
+require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars(trim($_POST['name']));
+    $name = trim($_POST['name']);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $message = htmlspecialchars(trim($_POST['message']));
-
-    if (empty($name) || empty($email) || empty($message)) {
-        echo json_encode(['status' => 'error', 'message' => 'All fields are required.']);
-        exit;
-    }
+    $message = trim($_POST['message']);
 
     $mail = new PHPMailer(true);
     try {
-        // Server settings (use your SMTP)
+        $mail->SMTPDebug = 2;                      // Enable verbose debug
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'mstprivatelimited@gmail.com';  // Your Gmail
-        $mail->Password = 'rova bcyj ecpf vtzl';             // App Password (not regular)
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'mstprivatelimited@gmail.com';
+        $mail->Password   = 'rova bcyj ecpf vtzl';   // 16-digit
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
 
-        // Recipients
         $mail->setFrom($email, $name);
         $mail->addAddress('mstprivatelimited@gmail.com');
-
-        // Content
         $mail->isHTML(true);
-        $mail->Subject = "New Contact: $name";
-        $mail->Body = "<h3>New Message</h3><p><strong>Name:</strong> $name<br><strong>Email:</strong> $email<br><strong>Message:</strong><br>$message</p>";
+        $mail->Subject = "Contact: $name";
+        $mail->Body    = "<h3>Name:</h3> $name <br><h3>Email:</h3> $email <br><h3>Message:</h3> $message";
 
         $mail->send();
-        echo json_encode(['status' => 'success', 'message' => 'Thank you! We\'ll respond soon.']);
+        echo json_encode(['status' => 'success', 'message' => 'Sent!']);
     } catch (Exception $e) {
-        echo json_encode(['status' => 'error', 'message' => 'Failed to send. Try again.']);
+        // LOG ERROR
+        error_log("PHPMailer Error: " . $mail->ErrorInfo);
+        echo json_encode(['status' => 'error', 'message' => 'Failed: ' . $mail->ErrorInfo]);
     }
-} else {
-    echo json_encode(['status' => 'error', 'message' => 'Invalid request.']);
 }
 ?>
