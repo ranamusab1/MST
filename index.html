@@ -3,89 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MST (Private) Limited - AI-Powered Digital Solutions</title>
+    <title>MST (Private) Limited | 2026 AI & Tech Hub</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #1E3A8A;
+            --accent-glow: rgba(0, 212, 255, 0.4);
+            --bg-dark: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #1a1a1a;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
             color: #FFFFFF;
+            overflow-x: hidden;
+            cursor: none;
         }
-        .navbar {
-            background-color: #000000 !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+
+        /* --- 1. Preloader --- */
+        #loader {
+            position: fixed; width: 100%; height: 100vh; background: #000; z-index: 99999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s;
         }
-        .navbar-brand img {
-            height: 50px;
+        .loader-logo { font-size: 2rem; font-weight: 800; color: var(--primary-color); letter-spacing: 10px; margin-bottom: 20px; text-transform: uppercase; }
+        .progress-bar-wrap { width: 200px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+        .progress-bar-inner { position: absolute; width: 100%; height: 100%; background: var(--primary-color); left: -100%; animation: load 1.5s infinite; }
+        @keyframes load { 100% { left: 100%; } }
+
+        /* --- 2. Custom Cursor --- */
+        #cursor-dot { width: 8px; height: 8px; background: var(--primary-color); position: fixed; border-radius: 50%; z-index: 10001; pointer-events: none; }
+        #cursor-outline { width: 40px; height: 40px; border: 2px solid var(--primary-color); position: fixed; border-radius: 50%; z-index: 10000; pointer-events: none; transition: transform 0.1s ease-out; }
+
+        /* --- 3. Futuristic Navbar --- */
+        .navbar { padding: 25px 0; transition: 0.5s; z-index: 1000; }
+        .navbar.scrolled {
+            background: rgba(5, 5, 5, 0.8) !important;
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 5px 30px rgba(0, 212, 255, 0.1);
         }
-        .navbar-nav .nav-link {
-            color: #FFFFFF !important;
-            transition: color 0.3s;
+        .nav-link { font-weight: 600; margin: 0 15px; color: #fff !important; transition: 0.3s; }
+        .nav-link:hover { color: var(--primary-color) !important; transform: translateY(-2px); }
+        .btn-join { 
+            border: 1px solid var(--primary-color); color: var(--primary-color); border-radius: 50px; 
+            padding: 8px 25px; transition: 0.4s; font-weight: 600;
         }
-        .navbar-nav .nav-link:hover {
-            color: #ADD8E6 !important;
+        .btn-join:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 20px var(--primary-color); }
+
+        /* --- 4. Hero Section --- */
+        .hero { height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
+        .hero-content { position: relative; z-index: 2; width: 100%; }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 800; line-height: 1.1; }
+        .text-cyan { color: var(--primary-color); }
+
+        /* --- 5. Glass Cards & Verification --- */
+        .section-padding { padding: 100px 0; }
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border); border-radius: 25px;
+            padding: 40px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); height: 100%;
         }
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-bg.jpg') center/cover;
-            color: #FFFFFF;
-            padding: 150px 0;
-            margin-top: 76px;
-            text-align: center;
+        .glass-card:hover {
+            border-color: var(--primary-color); transform: translateY(-15px) scale(1.02);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
         }
-        .hero h1 {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        .cert-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; padding: 30px; cursor: pointer; transition: 0.4s ease;
         }
-        .service-card, .case-study {
-            background: #2d2d2d;
-            color: #FFFFFF;
-            border: none;
-            transition: all 0.3s;
+        .cert-card:hover {
+            border-color: var(--primary-color); transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
         }
-        .service-card:hover, .case-study:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        .btn-primary {
-            background-color: #1E3A8A;
-            border-color: #1E3A8A;
-        }
-        .btn-primary:hover {
-            background-color: #ADD8E6;
-            border-color: #ADD8E6;
-            color: #000000;
-        }
-        footer {
-            background-color: #000000;
-            color: #FFFFFF;
-            padding: 20px 0;
-        }
-        .bg-light {
-            background-color: #2d2d2d !important;
-        }
-        .advantage-item, .expertise-item {
-            background: #2d2d2d;
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-        .advantage-item:hover, .expertise-item:hover {
-            transform: translateY(-5px);
-        }
+        .cert-logo { height: 60px; width: auto; filter: grayscale(1) brightness(1.5); transition: 0.4s; }
+        .cert-card:hover .cert-logo { filter: grayscale(0) brightness(1); transform: scale(1.1); }
+
+        .icon-box { font-size: 3rem; color: var(--primary-color); margin-bottom: 25px; transition: 0.4s; }
+        .glass-card:hover .icon-box { transform: rotateY(360deg); filter: drop-shadow(0 0 10px var(--primary-color)); }
+
+        /* --- 6. Marquee / Elite Clients --- */
+        .marquee { overflow: hidden; white-space: nowrap; background: rgba(255,255,255,0.02); padding: 50px 0; border-top: 1px solid var(--glass-border); }
+        .marquee-inner { display: inline-block; animation: scroll 30s linear infinite; }
+        .marquee-item { display: inline-flex; align-items: center; margin: 0 60px; font-weight: 800; font-size: 1.2rem; transition: 0.3s; color: rgba(255,255,255,0.6); }
+        .marquee-logo { height: 50px; width: auto; margin-right: 20px; filter: grayscale(1) invert(1); transition: 0.4s; }
+        .marquee-item:hover { color: var(--primary-color); }
+        .marquee-item:hover .marquee-logo { filter: grayscale(0) invert(0); transform: scale(1.1); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- 7. Modals & Buttons --- */
+        .modal-content { backdrop-filter: blur(20px); border: 2px solid var(--primary-color) !important; border-radius: 25px; }
+        .modal-body img { max-height: 80vh; object-fit: contain; }
+        .btn-modern { padding: 15px 40px; border-radius: 50px; font-weight: 700; text-transform: uppercase; transition: 0.5s; border: none; }
+        .btn-primary-tech { background: linear-gradient(45deg, var(--secondary-color), var(--primary-color)); color: white; box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3); }
+        .btn-primary-tech:hover { transform: scale(1.05); box-shadow: 0 15px 30px var(--primary-color); color: white; }
+
+        footer { border-top: 1px solid var(--glass-border); padding: 80px 0 20px; background: #000; }
+        @media (max-width: 768px) { body { cursor: auto; } #cursor-dot, #cursor-outline { display: none; } .hero { text-align: center; } }
     </style>
 </head>
 <body>
+
+    <div id="loader">
+        <div class="loader-logo">MST (PRIVATE) LIMITED</div>
+        <div class="progress-bar-wrap"><div class="progress-bar-inner"></div></div>
+    </div>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="MST (Private) Limited Logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="#"><img src="images/logo.png" alt="MST Logo" height="50"></a>
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -94,147 +136,241 @@
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="careers.html">Careers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link btn-join ms-lg-3" href="contact.html">Get Started</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-4">MST (Private) Limited</h1>
-            <p class="lead mb-5">Where Innovation Meets Solution</p>
-            <a href="#services" class="btn btn-primary btn-lg">Explore Services</a>
-        </div>
-    </section>
-
-    <section id="services" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">What We Offer</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up"><div class="card service-card text-center p-4"><i class="fas fa-globe fa-3x text-primary mb-3"></i><h5>Web Development</h5><p>Custom, responsive websites with cutting-edge tech.</p></div></div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100"><div class="card service-card text-center p-4"><i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i><h5>App Development</h5><p>Cross-platform apps with seamless user experiences.</p></div></div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200"><div class="card service-card text-center p-4"><i class="fas fa-cogs fa-3x text-primary mb-3"></i><h5>IT Consultancy</h5><p>Strategic guidance for digital transformation.</p></div></div>
+        <div id="particles-js"></div>
+        <div class="container hero-content text-center">
+            <h6 class="text-uppercase fw-bold mb-3" data-aos="fade-down" style="letter-spacing: 5px;">Transforming Tomorrow</h6>
+            <h1 class="hero-title" data-aos="zoom-out" data-aos-duration="1200">
+                MST (PRIVATE) <span class="text-cyan">LIMITED</span>
+            </h1>
+            <p class="lead mb-5 opacity-75 mx-auto" style="max-width: 750px;" data-aos="fade-up" data-aos-delay="400">
+                Architecting future-ready digital ecosystems using AI-driven software and high-performance cloud architectures.
+            </p>
+            <div data-aos="fade-up" data-aos-delay="600">
+                <a href="#offer" class="btn btn-modern btn-primary-tech me-md-3 mb-3">Explore Solutions</a>
+                <a href="#projects" class="btn btn-modern btn-outline-light mb-3">Our Success Stories</a>
             </div>
         </div>
     </section>
 
-    <section id="expertise" class="py-5">
+    <section class="section-padding bg-black">
         <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Our Expertise</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up">
-                    <div class="expertise-item text-center">
-                        <i class="fas fa-code fa-2x text-primary mb-3"></i>
-                        <h5>Software Engineering</h5>
-                        <p>Expertise in ASP.NET, C#, and Java for robust solutions.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="expertise-item text-center">
-                        <i class="fas fa-paint-brush fa-2x text-primary mb-3"></i>
-                        <h5>UI/UX Design</h5>
-                        <p>Intuitive designs with Figma and responsive layouts.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="expertise-item text-center">
-                        <i class="fas fa-cloud fa-2x text-primary mb-3"></i>
-                        <h5>Cloud & AI</h5>
-                        <p>Specialized in AWS, Azure, and AI-driven insights.</p>
-                    </div>
-                </div>
+            <div class="text-center mb-5">
+                <h6 class="text-cyan text-uppercase fw-bold" style="letter-spacing: 3px;">Verified & Registered</h6>
+                <h2 class="display-6 fw-bold">Official Recognition</h2>
             </div>
-        </div>
-    </section>
-
-    <section id="advantages" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Your Unfair Advantages</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up">
-                    <div class="advantage-item text-center">
-                        <i class="fas fa-brain fa-2x text-primary mb-3"></i>
-                        <h5>AI Expertise</h5>
-                        <p>Fast-track your ideas with AI innovation.</p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-md-3" data-aos="zoom-in">
+                    <div class="cert-card text-center" data-bs-toggle="modal" data-bs-target="#secpModal">
+                        <img src="images/secp.png" alt="SECP" class="cert-logo">
+                        <p class="mt-3 mb-0 fw-bold">SECP Registered</p>
+                        <small class="text-cyan">Click to Verify <i class="fas fa-certificate ms-1"></i></small>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="advantage-item text-center">
-                        <i class="fas fa-rocket fa-2x text-primary mb-3"></i>
-                        <h5>Agile Delivery</h5>
-                        <p>High-velocity solutions tailored to your needs.</p>
+                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="cert-card text-center" data-bs-toggle="modal" data-bs-target="#psebModal">
+                        <img src="images/pseb.jpg" alt="PSEB" class="cert-logo">
+                        <p class="mt-3 mb-0 fw-bold">PSEB Member</p>
+                        <small class="text-cyan">Click to Verify <i class="fas fa-certificate ms-1"></i></small>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="advantage-item text-center">
-                        <i class="fas fa-globe fa-2x text-primary mb-3"></i>
-                        <h5>Global Reach</h5>
-                        <p>Pakistan-based team serving clients worldwide.</p>
+                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="cert-card text-center" data-bs-toggle="modal" data-bs-target="#fbrModal">
+                        <img src="images/fbr.jpg" alt="FBR" class="cert-logo">
+                        <p class="mt-3 mb-0 fw-bold">FBR Certified</p>
+                        <small class="text-cyan">Click to Verify <i class="fas fa-certificate ms-1"></i></small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio" class="py-5">
+    <section id="offer" class="section-padding">
         <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Featured Projects</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up">
-                    <div class="case-study text-center">
-                        <img src="images/pia-2.png" class="img-fluid rounded mb-3" alt="PIA System" style="max-width: 100%;">
-                        <h5>PIA Complaints System</h5>
-                        <p>Enterprise solution for PIA's Award+ Members.</p>
-                        <a href="portfolio.html" class="btn btn-sm btn-primary">View Details</a>
+            <div class="text-center mb-5">
+                <h6 class="text-cyan text-uppercase fw-bold">Our Solutions</h6>
+                <h2 class="display-5 fw-bold" data-aos="fade-up">What We Offer</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card text-center">
+                        <i class="fas fa-laptop-code icon-box"></i>
+                        <h4>Web Development</h4>
+                        <p class="opacity-75">Custom, responsive websites with cutting-edge tech (Next.js, MERN, React) for high-traffic environments.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card text-center">
+                        <i class="fas fa-mobile-alt icon-box"></i>
+                        <h4>App Development</h4>
+                        <p class="opacity-75">Cross-platform iOS and Android apps using Flutter and React Native with seamless user experiences.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="glass-card text-center">
+                        <i class="fas fa-lightbulb icon-box"></i>
+                        <h4>IT Consultancy</h4>
+                        <p class="opacity-75">Strategic guidance for digital transformation to help businesses scale with AI and data-driven insights.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5 bg-light">
-        <div class="container text-center">
-            <h2 data-aos="fade-up">Ready to Innovate?</h2>
-            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Let’s build your next big thing together.</p>
-            <a href="contact.html" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="200">Contact Us</a>
+    <section id="projects" class="section-padding bg-black">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-cyan fw-bold">PORTFOLIO</h6>
+                <h2 class="display-5 fw-bold">Featured Success Story</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="zoom-in">
+                    <div class="glass-card p-0 overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="images/pia-1.png" class="img-fluid h-100" style="object-fit: cover;" alt="PIA Project">
+                            </div>
+                            <div class="col-md-6 p-5">
+                                <h4 class="text-cyan mb-3">PIA Complaints System</h4>
+                                <p class="opacity-75">We developed a real-time tracking and resolution portal for PIA's elite Award+ Members, improving response time by 90%.</p>
+                                <ul class="list-unstyled small opacity-50 mb-4">
+                                    <li><i class="fas fa-check-circle text-cyan me-2"></i> Real-time Admin Dashboard</li>
+                                    <li><i class="fas fa-check-circle text-cyan me-2"></i> Automated SMS/Email Ticketing</li>
+                                </ul>
+                                <a href="portfolio.html" class="btn btn-outline-light btn-sm">Explore Portfolio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee">
+        <div class="container text-center mb-4">
+            <span class="small text-uppercase opacity-50 fw-bold" style="letter-spacing: 5px;">Our Elite Clients</span>
+        </div>
+        <div class="marquee-inner">
+            <div class="marquee-item"><img src="images/pia.png" alt="PIA" class="marquee-logo"> PAKISTAN INTERNATIONAL AIRLINES</div>
+            <div class="marquee-item"><img src="images/paragon.png" alt="Paragon" class="marquee-logo"> PARAGONCUT LLC.</div>
+            <div class="marquee-item"><img src="images/pia.png" alt="PIA" class="marquee-logo"> PAKISTAN INTERNATIONAL AIRLINES</div>
+            <div class="marquee-item"><img src="images/paragon.png" alt="Paragon" class="marquee-logo"> PARAGONCUT LLC.</div>
+        </div>
+    </div>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="glass-card text-center py-5 px-4" data-aos="zoom-in" style="background: linear-gradient(135deg, rgba(30,58,138,0.2) 0%, rgba(0,212,255,0.05) 100%);">
+                <h2 class="display-5 fw-bold mb-4">Ready to Innovate?</h2>
+                <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 600px;">Let’s build your next big thing together. We are your premium technology partners.</p>
+                <a href="mailto:mstprivatelimited@gmail.com" class="btn btn-modern btn-primary-tech px-5">Start a Project</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 text-center mb-3">
-                    <h5>MST (Private) Limited</h5>
-                    <p>Where Innovation Meets Solution.</p>
+        <div class="container text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <img src="images/logo.png" height="40" class="mb-3" alt="MST">
+                    <p class="small opacity-50">Architecting Future-Ready Digital Ecosystems. Registered with SECP & PSEB.</p>
                 </div>
-                <div class="col-md-4 text-center mb-3">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="about.html" class="text-white">About Us</a></li>
-                        <li><a href="services.html" class="text-white">Services</a></li>
-                        <li><a href="portfolio.html" class="text-white">Portfolio</a></li>
-                    </ul>
+                <div class="col-md-4">
+                    <h6 class="fw-bold text-cyan mb-3">Contact Information</h6>
+                    <p class="small mb-1"><i class="fas fa-envelope me-2"></i> mstprivatelimited@gmail.com</p>
+                    <p class="small mb-1"><i class="fas fa-phone me-2"></i> +92 311 3857232</p>
+                    <p class="small"><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</p>
                 </div>
-                <div class="col-md-4 text-center mb-3">
-                    <h5>Contact</h5>
-                    <p><i class="fas fa-envelope me-2"></i> <a href="mailto:mstprivatelimited@gmail.com" class="text-white">mstprivatelimited@gmail.com</a></p>
-                    <p><i class="fas fa-phone me-2"></i> +92 311 3857232</p>
-                    <div class="mt-2">
-                        <a href="https://github.com/ranamusab1" class="text-white me-3" target="_blank"><i class="fab fa-github fa-2x"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-linkedin fa-2x"></i></a>
+                <div class="col-md-4 text-md-end">
+                    <h6 class="fw-bold mb-3">Follow Us</h6>
+                    <div class="d-flex justify-content-md-end gap-3">
+                        <a href="https://www.linkedin.com/company/mstprivatelimited/" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://www.instagram.com/mstprivatelimited/" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.tiktok.com/@mstprivatelimited?lang=en" class="text-white"><i class="fab fa-tiktok fa-lg"></i></a>
+                        <a href="https://www.facebook.com/share/17hCmhCA5v/" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://github.com/ranamusab1" class="text-white"><i class="fab fa-github fa-lg"></i></a>
                     </div>
                 </div>
             </div>
-            <hr class="bg-white">
-            <p class="text-center mb-0">© 2025 MST (Private) Limited. All Rights Reserved. SECP Registered.</p>
+            <hr class="my-4 opacity-10">
+            <div class="text-center small opacity-40">
+                &copy; 2026 MST (Private) Limited. SECP & PSEB Registered Innovation Hub.
+            </div>
         </div>
     </footer>
 
+    <div class="modal fade" id="secpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-0"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body text-center"><img src="images/secp-certificate.jpg" class="img-fluid rounded shadow-lg" alt="SECP Certificate"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="psebModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-0"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body text-center"><img src="images/pseb-certificate.jpg" class="img-fluid rounded shadow-lg" alt="PSEB Certificate"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="fbrModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-0"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body text-center"><img src="images/fbr-certificate.jpg" class="img-fluid rounded shadow-lg" alt="FBR Certificate"></div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
-        AOS.init({ duration: 1000 });
+        AOS.init({ duration: 1000, once: true });
+
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 800);
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = `${e.clientX}px`;
+            dot.style.top = `${e.clientY}px`;
+            outline.animate({ left: `${e.clientX - 20}px`, top: `${e.clientY - 20}px` }, { duration: 400, fill: "forwards" });
+        });
+
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00d4ff" },
+                "opacity": { "value": 0.3 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00d4ff", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.5 }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } }
+            },
+            "retina_detect": true
+        });
     </script>
 </body>
 </html>

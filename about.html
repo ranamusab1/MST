@@ -3,109 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About MST (Private) Limited</title>
+    <title>About Us | MST (Private) Limited</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        body { font-family: 'Roboto', sans-serif; background-color: #1a1a1a; color: #FFFFFF; }
-        .navbar { background-color: #000000 !important; box-shadow: 0 2px 10px rgba(0,0,0,0.5); position: fixed; width: 100%; top: 0; z-index: 1000; }
-        .navbar-brand img { height: 50px; width: auto;}
-        .navbar-nav .nav-link { color: #FFFFFF !important; transition: color 0.3s; }
-        .navbar-nav .nav-link:hover { color: #ADD8E6 !important; }
-        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/aboutus.png') center/cover; color: #FFFFFF; padding: 150px 0; margin-top: 76px; text-align: center; }
-        .hero h1 { text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
-        .team-card { background: #2d2d2d; color: #FFFFFF; border: none; width: 100%; height: 500px; position: relative; overflow: hidden; transition: box-shadow 0.3s, transform 0.3s; }
-        .team-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .team-card-front { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; box-sizing: border-box; text-align: center; }
-        .team-card-front p { font-size: 0.9rem; margin: 10px 0; overflow: hidden; }
-        img { display: block; margin: 0 auto 15px; width: 120px; height: auto; border-radius: 50%; }
-        footer { background-color: #000000; color: #FFFFFF; padding: 20px 0; }
-        .team-section { padding-top: 100px; }
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #1E3A8A;
+            --bg-dark: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #FFFFFF;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* --- Global Elements --- */
+        #loader {
+            position: fixed; width: 100%; height: 100vh; background: #000; z-index: 99999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s;
+        }
+        .loader-logo { font-size: 2rem; font-weight: 800; color: var(--primary-color); letter-spacing: 10px; margin-bottom: 20px; text-transform: uppercase; }
+        .progress-bar-wrap { width: 200px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+        .progress-bar-inner { position: absolute; width: 100%; height: 100%; background: var(--primary-color); left: -100%; animation: load 1.5s infinite; }
+        @keyframes load { 100% { left: 100%; } }
+
+        #cursor-dot { width: 8px; height: 8px; background: var(--primary-color); position: fixed; border-radius: 50%; z-index: 10001; pointer-events: none; }
+        #cursor-outline { width: 40px; height: 40px; border: 2px solid var(--primary-color); position: fixed; border-radius: 50%; z-index: 10000; pointer-events: none; transition: transform 0.1s ease-out; }
+
+        /* --- Navbar --- */
+        .navbar { padding: 25px 0; transition: 0.5s; z-index: 1000; }
+        .navbar.scrolled {
+            background: rgba(5, 5, 5, 0.8) !important;
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .nav-link { font-weight: 600; margin: 0 15px; color: #fff !important; }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color) !important; }
+
+        /* --- Hero Section --- */
+        .hero-about {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #050505;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-about::after {
+            content: '';
+            position: absolute;
+            width: 200%; height: 200%;
+            top: -50%; left: -50%;
+            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 30%, rgba(30, 58, 138, 0.1) 0%, transparent 30%);
+            animation: rotateMesh 20s linear infinite;
+            z-index: 1;
+        }
+        @keyframes rotateMesh { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        #hero-particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
+        .hero-content { position: relative; z-index: 10; }
+        .hero-about h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            background: linear-gradient(to bottom, #fff 40%, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Content Sections --- */
+        .section-padding { padding: 100px 0; }
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border); border-radius: 25px;
+            padding: 40px; height: 100%; transition: 0.4s;
+        }
+        .glass-card:hover { border-color: rgba(0, 212, 255, 0.3); }
+
+        /* --- Team Cards --- */
+        .team-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.5s;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .team-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            transform: translateX(-100%); transition: 0.6s;
+        }
+        .team-card:hover::before { transform: translateX(100%); }
+        .team-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+        .team-img {
+            width: 140px; height: 140px; object-fit: cover; border-radius: 50%;
+            border: 2px solid var(--primary-color); padding: 5px; margin-bottom: 20px;
+            filter: grayscale(100%); transition: 0.5s;
+        }
+        .team-card:hover .team-img { filter: grayscale(0%); transform: scale(1.05); }
+        .role-badge {
+            background: rgba(0, 212, 255, 0.1); color: var(--primary-color);
+            padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700;
+            display: inline-block; margin-bottom: 15px; text-transform: uppercase;
+        }
+
+        footer { border-top: 1px solid var(--glass-border); padding: 60px 0 20px; background: #000; }
+        .text-cyan { color: var(--primary-color) !important; }
+
+        @media (max-width: 768px) { body { cursor: auto; } #cursor-dot, #cursor-outline { display: none; } }
     </style>
 </head>
 <body>
+
+    <div id="loader">
+        <div class="loader-logo">MST (PRIVATE) LIMITED</div>
+        <div class="progress-bar-wrap"><div class="progress-bar-inner"></div></div>
+    </div>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="MST Logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="MST Logo" height="50"></a>
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="careers.html">Careers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-info ms-lg-3 px-4 rounded-pill" href="contact.html">Get Started</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-4">About Us</h1>
-            <p class="lead mb-5">Discover the story behind MST (Private) Limited's digital excellence.</p>
+    <section class="hero-about">
+        <canvas id="hero-particles"></canvas>
+        <div class="container text-center hero-content">
+            <h6 class="text-cyan text-uppercase fw-bold mb-3" style="letter-spacing: 8px;" data-aos="fade-down">The Story of MST</h6>
+            <h1 class="fw-bold mb-4" data-aos="zoom-in" data-aos-delay="200">About <span class="text-cyan">Us</span></h1>
+            <p class="lead opacity-75 mx-auto" style="max-width: 700px;" data-aos="fade-up" data-aos-delay="400">
+                Architecting future-ready digital ecosystems with precision, trust, and groundbreaking innovation.
+            </p>
         </div>
     </section>
 
-    <section class="py-5 team-section">
+    <section class="section-padding bg-black">
         <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Our Story</h2>
-            <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
-                Founded in 2025 by <strong>Rana Muhammad Musab Akram</strong>, <strong>MST (Private) Limited</strong> is a <strong>SECP-registered</strong> software house based in Pakistan, committed to delivering AI-powered, scalable, and secure digital solutions. From developing the PIA Complaints Management System to building custom web and mobile applications, we empower businesses with innovation, agility, and reliability. Our government registration with the Securities and Exchange Commission of Pakistan (SECP) ensures full compliance and trust in every project we deliver.
-            </p>
-
-            <h2 class="text-center mb-5 mt-5" data-aos="fade-up" data-aos-delay="200">Our Team</h2>
-            <div class="row">
-                <!-- Founder -->
-                <div class="col-md-4 mb-4" data-aos="fade-up">
-                    <div class="team-card">
-                        <div class="team-card-front">
-                            <img src="images/musab.jpeg" class="rounded mb-3" alt="Musab">
-                            <h5>Rana Muhammad Musab Akram</h5>
-                            <p class="text-muted" style="color: white !important;">Founder & CEO</p>
-                            <p>A dynamic Computer Systems Engineering student at DUET, leading MST with expertise in ASP.NET, C#, and SQL Server. Spearheaded the PIA Complaints System.</p>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="glass-card">
+                        <h2 class="display-6 fw-bold mb-4">Our <span class="text-cyan">Story</span></h2>
+                        <p class="lead opacity-75 mb-4">Founded in 2025 by <strong>Rana Muhammad Musab Akram</strong>, MST (Private) Limited is more than just a software house.</p>
+                        <p class="opacity-50 mb-4">Based in Pakistan and registered with <strong>SECP & PSEB</strong>, we emerged with a vision to bridge the gap between complex AI technologies and practical business solutions. From the prestigious <strong>PIA Complaints Management System</strong> to global collaborations, our journey is defined by one word: <strong>Innovation</strong>.</p>
+                        <div class="row g-3">
+                            <div class="col-sm-6"><div class="d-flex align-items-center"><i class="fas fa-check-circle text-cyan me-2"></i> <span>SECP Registered</span></div></div>
+                            <div class="col-sm-6"><div class="d-flex align-items-center"><i class="fas fa-check-circle text-cyan me-2"></i> <span>PSEB Registered</span></div></div>
+                            <div class="col-sm-12"><div class="d-flex align-items-center"><i class="fas fa-check-circle text-cyan me-2"></i> <span>AI-Driven Approach</span></div></div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Co-founder -->
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="team-card">
-                        <div class="team-card-front">
-                            <img src="images/ranaakram.jpeg" class="rounded mb-3" alt="Co-founder">
-                            <h5>Rana Muhammad Akram</h5>
-                            <p class="text-muted" style="color: white !important;">Co-founder</p>
-                            <p>Ex-DFO at CAA, Staff Officer to Federal Insurance Ombudsman, Protocol In-charge, Admin Officer at NKC. Handles business strategy, funding, partnerships, and team building.</p>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="row g-4">
+                        <div class="col-6"><div class="glass-card text-center py-5"><h2 class="text-cyan fw-bold mb-0">2025</h2><p class="small opacity-50">Year Founded</p></div></div>
+                        <div class="col-6"><div class="glass-card text-center py-5"><h2 class="text-cyan fw-bold mb-0">50+</h2><p class="small opacity-50">Projects Delivered</p></div></div>
+                        <div class="col-12">
+                            <div class="glass-card p-4 d-flex align-items-center">
+                                <i class="fas fa-shield-alt fa-3x text-cyan me-4"></i>
+                                <div><h5 class="mb-1">Verified Trust</h5><p class="small opacity-50 mb-0">Government recognized software engineering hub.</p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- HR Manager -->
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-cyan text-uppercase fw-bold">The Architects</h6>
+                <h2 class="display-5 fw-bold" data-aos="fade-up">Meet Our Leadership</h2>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="team-card">
-                        <div class="team-card-front">
-                            <img src="images/rananaveed.jpeg" class="rounded mb-3" alt="HR">
-                            <h5>Rana Muhammad Naveed Akram</h5>
-                            <p class="text-muted" style="color: white !important;">HR Manager</p>
-                            <p>Senior Flight Operation Officer at PIA. Manages hiring, training, salaries, performance reviews, policies, and developer retention programs.</p>
-                        </div>
+                        <img src="images/musab.jpeg" class="team-img" alt="CEO">
+                        <span class="role-badge">Founder & CEO</span>
+                        <h5 class="fw-bold">R. M. Musab Akram</h5>
+                        <p class="small opacity-50">Computer Systems Engineer (DUET). Expert in ASP.NET & AI Architectures. Lead for PIA systems.</p>
                     </div>
                 </div>
 
-                <!-- Operation Coordinator -->
-                <div class="col-md-4 mb-4 mx-auto" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="team-card">
-                        <div class="team-card-front">
-                            <img src="images/ranalaraib.jpeg" class="rounded mb-3" alt="Operations">
-                            <h5>Rana Muhammad Laraib Akram</h5>
-                            <p class="text-muted" style="color: white !important;">Operation Coordinator</p>
-                            <p>Complaint Receiver at Cantonment Board Malir. Handles daily operations, paperwork, contracts, invoicing, and project timelines.</p>
-                        </div>
+                        <img src="images/ranaakram.jpeg" class="team-img" alt="Co-Founder">
+                        <span class="role-badge">Co-founder</span>
+                        <h5 class="fw-bold">Rana Muhammad Akram</h5>
+                        <p class="small opacity-50">Ex-DFO CAA & Federal Staff Officer. Strategist for partnerships and global business growth.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-card">
+                        <img src="images/rananaveed.jpeg" class="team-img" alt="HR">
+                        <span class="role-badge">HR Manager</span>
+                        <h5 class="fw-bold">Rana Naveed Akram</h5>
+                        <p class="small opacity-50">Senior Flight Officer (PIA). Expert in talent acquisition and performance optimization.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-card">
+                        <img src="images/ranalaraib.jpeg" class="team-img" alt="Ops">
+                        <span class="role-badge">Operations Coordinator</span>
+                        <h5 class="fw-bold">Rana Laraib Akram</h5>
+                        <p class="small opacity-50">Operations expert at CBM. Manages project timelines, contracts, and daily efficiency.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="team-card">
+                        <img src="images/azmeer.jpg" class="team-img" alt="Growth">
+                        <span class="role-badge">Growth & Solution Executive</span>
+                        <h5 class="fw-bold">Azmeer Hassan Ammad</h5>
+                        <p class="small opacity-50">Computer Systems Engineer (DUET). Expert in MERN Stack & AI Architectures.</p>
                     </div>
                 </div>
             </div>
@@ -113,33 +263,98 @@
     </section>
 
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 text-center mb-3">
-                    <h5>MST (Private) Limited</h5>
-                    <p>Where Innovation Meets Solution.</p>
+        <div class="container text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <img src="images/logo.png" height="40" class="mb-3" alt="MST">
+                    <p class="small opacity-50">Architecting Future-Ready Digital Ecosystems. Registered with SECP & PSEB.</p>
                 </div>
-                <div class="col-md-4 text-center mb-3">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="about.html" class="text-white">About Us</a></li>
-                        <li><a href="services.html" class="text-white">Services</a></li>
-                        <li><a href="portfolio.html" class="text-white">Portfolio</a></li>
-                    </ul>
+                <div class="col-md-4">
+                    <h6 class="fw-bold text-cyan mb-3">Contact Information</h6>
+                    <p class="small mb-1"><i class="fas fa-envelope me-2"></i> mstprivatelimited@gmail.com</p>
+                    <p class="small mb-1"><i class="fas fa-phone me-2"></i> +92 311 3857232</p>
+                    <p class="small"><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</p>
                 </div>
-                <div class="col-md-4 text-center mb-3">
-                    <h5>Contact</h5>
-                    <p><i class="fas fa-envelope me-2"></i> <a href="mailto:mstprivatelimited@gmail.com" class="text-white">mstprivatelimited@gmail.com</a></p>
-                    <p><i class="fas fa-phone me-2"></i> +92 311 3857232</p>
+                <div class="col-md-4 text-md-end">
+                    <h6 class="fw-bold mb-3">Follow Us</h6>
+                    <div class="d-flex justify-content-md-end gap-3">
+                        <a href="https://www.linkedin.com/company/mstprivatelimited/" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://www.instagram.com/mstprivatelimited/" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.tiktok.com/@mstprivatelimited?lang=en" class="text-white"><i class="fab fa-tiktok fa-lg"></i></a>
+                        <a href="https://www.facebook.com/share/17hCmhCA5v/" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://github.com/ranamusab1" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
                 </div>
             </div>
-            <hr class="bg-white">
-            <p class="text-center mb-0">© 2025 MST (Private) Limited. All Rights Reserved. SECP Registered.</p>
+            <hr class="my-4 opacity-10">
+            <div class="text-center small opacity-40">
+                &copy; 2026 MST (Private) Limited. SECP & PSEB Registered Innovation Hub.
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000 });</script>
+
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 800);
+        });
+
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Custom Cursor
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = `${e.clientX}px`;
+            dot.style.top = `${e.clientY}px`;
+            outline.animate({ left: `${e.clientX - 20}px`, top: `${e.clientY - 20}px` }, { duration: 400, fill: "forwards" });
+        });
+
+        // Particle System
+        const canvas = document.getElementById('hero-particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particlesArray = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0; if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0; if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.3)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        function init() { for (let i = 0; i < 100; i++) particlesArray.push(new Particle()); }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        init(); animate();
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+    </script>
 </body>
 </html>

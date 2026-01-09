@@ -3,29 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - MST (Private) Limited</title>
+    <title>Contact | MST (Private) Limited</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        body { font-family: 'Roboto', sans-serif; background-color: #1a1a1a; color: #FFFFFF; }
-        .navbar { background-color: #000000 !important; box-shadow: 0 2px 10px rgba(0,0,0,0.5); position: fixed; width: 100%; top: 0; z-index: 1000; }
-        .navbar-brand img { height: 50px; }
-        .navbar-nav .nav-link { color: #FFFFFF !important; transition: color 0.3s; }
-        .navbar-nav .nav-link:hover { color: #ADD8E6 !important; }
-        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/contact.png') center/cover; color: #FFFFFF; padding: 150px 0; margin-top: 76px; text-align: center; }
-        .hero h1 { text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
-        footer { background-color: #000000; color: #FFFFFF; padding: 20px 0; }
-        .alert { margin-top: 15px; }
+        :root {
+            --primary-color: #00d4ff;
+            --accent-glow: rgba(0, 212, 255, 0.4);
+            --bg-dark: #020202;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #FFFFFF;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* --- Animated Background Particles --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* --- Loader & Cursor --- */
+        #loader { position: fixed; width: 100%; height: 100vh; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s; }
+        .progress-bar-wrap { width: 200px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+        .progress-bar-inner { position: absolute; width: 100%; height: 100%; background: var(--primary-color); left: -100%; animation: load 1.5s infinite; }
+        @keyframes load { 100% { left: 100%; } }
+        #cursor-dot { width: 8px; height: 8px; background: var(--primary-color); position: fixed; border-radius: 50%; z-index: 10001; pointer-events: none; }
+        #cursor-outline { width: 40px; height: 40px; border: 2px solid var(--primary-color); position: fixed; border-radius: 50%; z-index: 10000; pointer-events: none; transition: transform 0.15s ease-out; }
+
+         /* --- 3. Futuristic Navbar --- */
+        .navbar { padding: 25px 0; transition: 0.5s; z-index: 1000; }
+        .navbar.scrolled {
+            background: rgba(5, 5, 5, 0.8) !important;
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 5px 30px rgba(0, 212, 255, 0.1);
+        }
+        .nav-link { font-weight: 600; margin: 0 15px; color: #fff !important; transition: 0.3s; }
+        .nav-link:hover { color: var(--primary-color) !important; transform: translateY(-2px); }
+        .btn-join { 
+            border: 1px solid var(--primary-color); color: var(--primary-color); border-radius: 50px; 
+            padding: 8px 25px; transition: 0.4s; font-weight: 600;
+        }
+        .btn-join:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 20px var(--primary-color); }
+
+        /* --- Contact Hero --- */
+        .hero-contact {
+            padding: 180px 0 100px;
+            position: relative;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+        }
+
+        /* --- Glassmorphic Form --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transition: 0.5s;
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 25px 80px rgba(0, 212, 255, 0.1);
+        }
+
+        .input-group-custom {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .form-control {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--glass-border);
+            border-radius: 0;
+            color: #fff;
+            padding: 15px 5px;
+            font-size: 1.1rem;
+            transition: 0.4s;
+        }
+        .form-control:focus {
+            background: transparent;
+            box-shadow: none;
+            border-color: var(--primary-color);
+            color: #fff;
+        }
+        .form-label-custom {
+            position: absolute;
+            top: 15px;
+            left: 5px;
+            pointer-events: none;
+            transition: 0.3s;
+            opacity: 0.5;
+        }
+        .form-control:focus ~ .form-label-custom,
+        .form-control:valid ~ .form-label-custom {
+            top: -10px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            opacity: 1;
+            font-weight: bold;
+        }
+
+        /* --- Info Boxes --- */
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--glass-border);
+            transition: 0.4s;
+        }
+        .info-item:hover {
+            background: rgba(0, 212, 255, 0.05);
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+        .info-icon {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-right: 25px;
+            filter: drop-shadow(0 0 8px var(--primary-color));
+        }
+
+        .btn-launch {
+            background: linear-gradient(45deg, var(--primary-color), #0081ff);
+            color: #000;
+            font-weight: 800;
+            border-radius: 15px;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-launch:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px var(--accent-glow);
+            color: #000;
+        }
+
+        .map-wrapper {
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            filter: grayscale(1) invert(0.9) contrast(1.2);
+            transition: 0.5s;
+        }
+        .map-wrapper:hover { filter: grayscale(0) invert(0); }
+
+        footer { border-top: 1px solid var(--glass-border); padding: 60px 0; background: #000; }
+        .text-cyan { color: var(--primary-color); }
     </style>
 </head>
 <body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div id="loader">
+        <div class="loader-logo" style="font-size: 1.5rem; font-weight: 800; color: #00d4ff; letter-spacing: 10px;">MST (PRIVATE) LIMITED</div>
+        <div class="progress-bar-wrap"><div class="progress-bar-inner"></div></div>
+    </div>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="MST Logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="#"><img src="images/logo.png" alt="MST Logo" height="50"></a>
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -34,94 +203,194 @@
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="careers.html">Careers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link btn-join ms-lg-3" href="contact.html">Get Started</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-4">Contact Us</h1>
-            <p class="lead mb-5">Get in touch to start your project today.</p>
+    <section class="hero-contact text-center">
+        <div class="container" data-aos="zoom-out">
+            <h6 class="text-cyan text-uppercase fw-bold mb-3" style="letter-spacing: 10px;">Connect With Us</h6>
+            <h1 class="display-2 fw-800 mb-0">Transforming Ideas Into <br><span class="text-cyan">Digital Reality.</span></h1>
         </div>
     </section>
 
-    <section class="py-5">
+    <section class="pb-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 mb-4" data-aos="fade-up">
-                    <h3>Contact Information</h3>
-                    <p><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</p>
-                    <p><i class="fas fa-envelope me-2"></i> <a href="mailto:mstprivatelimited@gmail.com">mstprivatelimited@gmail.com</a></p>
-                    <p><i class="fas fa-phone me-2"></i> +92 311 3857232</p>
+            <div class="row g-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-paper-plane"></i></div>
+                        <div>
+                            <p class="small opacity-50 mb-0">Direct Mail</p>
+                            <h5 class="mb-0">mstprivatelimited@gmail.com</h5>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <p class="small opacity-50 mb-0">Quick Call</p>
+                            <h5 class="mb-0">+92 311 3857232</h5>
+                        </div>
+                    </div>
+                    <div class="info-item" style="margin-bottom: 20px;">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <p class="small opacity-50 mb-0">Global Hub</p>
+                            <h5 class="mb-0">Karachi, Pakistan</h5>
+                        </div>
+                    </div>
+                    <div class="map-wrapper mt-4">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.664398404754!2d67.17060667358234!3d24.875309244666614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4f7cec966dfc76e7%3A0xde0f2513942c18ab!2sMST%20(Private)%20Limited!5e0!3m2!1sen!2s!4v1767987389101!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
-                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Send Us a Message</h3>
-                    <form id="contactForm">
-                        <div class="mb-3">
-                            <input type="text" name="name" class="form-control bg-dark text-white" placeholder="Your Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" name="email" class="form-control bg-dark text-white" placeholder="Your Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea name="message" class="form-control bg-dark text-white" rows="4" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                        <div id="response"></div>
-                    </form>
+
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="glass-card">
+                        <h2 class="fw-800 mb-5">Send us a <span class="text-cyan">Message</span></h2>
+                        <form id="contactForm">
+                            <div class="input-group-custom">
+                                <input type="text" name="name" class="form-control" required>
+                                <label class="form-label-custom">Full Name</label>
+                            </div>
+                            <div class="input-group-custom">
+                                <input type="email" name="email" class="form-control" required>
+                                <label class="form-label-custom">Email Address</label>
+                            </div>
+                            <div class="input-group-custom">
+                                <textarea name="message" class="form-control" rows="4" required></textarea>
+                                <label class="form-label-custom">Project Brief</label>
+                            </div>
+                            <button type="submit" class="btn btn-launch">
+                                Send Inquiry <i class="fas fa-bolt ms-2"></i>
+                            </button>
+                            <div id="response" class="mt-4 text-center"></div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 text-center mb-3">
-                    <h5>MST (Private) Limited</h5>
-                    <p>Where Innovation Meets Solution.</p>
+        <div class="container text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <img src="images/logo.png" height="40" class="mb-3" alt="MST">
+                    <p class="small opacity-50">Architecting Future-Ready Digital Ecosystems. Registered with SECP & PSEB.</p>
                 </div>
-                <div class="col-md-4 text-center mb-3">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="about.html" class="text-white">About Us</a></li>
-                        <li><a href="services.html" class="text-white">Services</a></li>
-                        <li><a href="portfolio.html" class="text-white">Portfolio</a></li>
-                    </ul>
+                <div class="col-md-4">
+                    <h6 class="fw-bold text-cyan mb-3">Contact Information</h6>
+                    <p class="small mb-1"><i class="fas fa-envelope me-2"></i> mstprivatelimited@gmail.com</p>
+                    <p class="small mb-1"><i class="fas fa-phone me-2"></i> +92 311 3857232</p>
+                    <p class="small"><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</p>
                 </div>
-                <div class="col-md-4 text-center mb-3">
-                    <h5>Contact</h5>
-                    <p><i class="fas fa-envelope me-2"></i> <a href="mailto:mstprivatelimited@gmail.com" class="text-white">mstprivatelimited@gmail.com</a></p>
-                    <p><i class="fas fa-phone me-2"></i> +92 311 3857232</p>
+                <div class="col-md-4 text-md-end">
+                    <h6 class="fw-bold mb-3">Follow Us</h6>
+                    <div class="d-flex justify-content-md-end gap-3">
+                        <a href="https://www.linkedin.com/company/mstprivatelimited/" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://www.instagram.com/mstprivatelimited/" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.tiktok.com/@mstprivatelimited?lang=en" class="text-white"><i class="fab fa-tiktok fa-lg"></i></a>
+                        <a href="https://www.facebook.com/share/17hCmhCA5v/" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://github.com/ranamusab1" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
                 </div>
             </div>
-            <hr class="bg-white">
-            <p class="text-center mb-0">© 2025 MST (Private) Limited. All Rights Reserved. SECP Registered.</p>
+            <hr class="my-4 opacity-10">
+            <div class="text-center small opacity-40">
+                &copy; 2026 MST (Private) Limited. SECP & PSEB Registered Innovation Hub.
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000 });
+        AOS.init({ duration: 1200, once: true });
 
+        // Preloader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 800);
+        });
+
+        // Background Particles
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 100; i++) particles.push(new Particle());
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        init(); animate();
+
+        window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.navbar');
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+        });
+
+        // Custom Cursor
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+            outline.animate({ left: e.clientX - 20 + 'px', top: e.clientY - 20 + 'px' }, { duration: 500, fill: "forwards" });
+        });
+
+        // Form Submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            const res = document.getElementById('response');
+            res.innerHTML = '<span class="text-cyan pulse">Encrypting Message...</span>';
+            
             const formData = new FormData(this);
-            fetch('contact.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
+            fetch('contact.php', { method: 'POST', body: formData })
+            .then(r => r.json())
             .then(data => {
-                const res = document.getElementById('response');
-                res.innerHTML = `<div class="alert alert-${data.status}">${data.message}</div>`;
+                res.innerHTML = `<div class="p-3 rounded-pill border border-info" style="background:rgba(0,212,255,0.1)">${data.message}</div>`;
                 if (data.status === 'success') this.reset();
             })
             .catch(() => {
-                document.getElementById('response').innerHTML = '<div class="alert alert-danger">Server error. Try again later.</div>';
+                res.innerHTML = '<div class="text-danger">Uplink Error. Please check connection.</div>';
             });
         });
     </script>
