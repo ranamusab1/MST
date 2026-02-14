@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | MST Limited</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --bg-dark: #010101;
+            --glass: rgba(255, 255, 255, 0.02);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Animated Mesh Background */
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #020202, #050505);
+            z-index: -1;
+        }
+
+        .mesh-gradient {
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.05), transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(0,0,0,0.8) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .terms-header {
+            padding: 160px 0 80px;
+            background: linear-gradient(to bottom, rgba(0,212,255,0.05), transparent);
+        }
+
+        /* Sidebar Navigation */
+        .floating-sidebar {
+            position: sticky;
+            top: 120px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .term-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 12px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+
+        .term-step.active {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            padding-left: 20px;
+        }
+
+        /* Content Blocks */
+        .content-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 35px;
+            padding: 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        .legal-number {
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        h2 { font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; }
+
+        .highlight-box {
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .footer-elite {
+    background: radial-gradient(circle at top right, #080808 0%, #000 100%);
+    padding: 100px 0 30px;
+    border-top: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.hover-cyan:hover {
+    color: var(--primary-color) !important;
+    padding-left: 5px;
+    transition: 0.3s ease;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: 0.4s;
+    border: 1px solid transparent;
+}
+
+.social-icon:hover {
+    background: rgba(0, 212, 255, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    transform: translateY(-5px);
+}
+        @media (max-width: 768px) { body { cursor: auto; } #cursor-dot, #cursor-outline { display: none; } .hero { text-align: center; } }
+    </style>
+
+        @media (max-width: 991px) {
+            .content-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh">
+        <div class="mesh-gradient" style="top: -10%; right: -10%;"></div>
+        <div class="mesh-gradient" style="bottom: -10%; left: -10%; animation-delay: -5s;"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="images/logo-black.jpeg" height="90" style="height: 90px !important;"></a>
+            <div class="ms-auto"><a href="index.html" class="btn btn-sm btn-outline-info rounded-pill px-4">Back to Home</a></div>
+        </div>
+    </nav>
+
+    <header class="terms-header text-center">
+        <div class="container" data-aos="zoom-out">
+            <h6 class="text-cyan fw-bold text-uppercase mb-3" style="letter-spacing: 5px;">Legal Framework</h6>
+            <h1 class="display-3 fw-bold mb-4">Terms of <span class="text-cyan">Service</span></h1>
+            <p class="mx-auto opacity-50" style="max-width: 600px;">Please review the digital cooperation standards of MST (Private) Limited.</p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        <div class="row g-5">
+            <div class="col-lg-4 d-none d-lg-block">
+                <div class="floating-sidebar">
+                    <p class="small fw-bold opacity-30 px-2 text-uppercase mb-3">TOC Index</p>
+                    <a href="#services" class="term-step active"><i class="fas fa-terminal"></i> 01. Service Scope</a>
+                    <a href="#ownership" class="term-step"><i class="fas fa-code"></i> 02. IP & Ownership</a>
+                    <a href="#payments" class="term-step"><i class="fas fa-credit-card"></i> 03. Payment Terms</a>
+                    <a href="#marketing" class="term-step"><i class="fas fa-video"></i> 04. Marketing Rights</a>
+                    <a href="#liability" class="term-step"><i class="fas fa-shield-alt"></i> 05. Liability & Risk</a>
+                </a>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="content-card" data-aos="fade-up">
+                    
+                    <div id="services" class="legal-section mb-5">
+                        <span class="legal-number">SECTION 01</span>
+                        <h2>Service Engagement</h2>
+                        <p>MST (Private) Limited specializes in custom software development, AI solutions, and UI/UX engineering. All project deliverables and timelines are defined in the specific service agreement signed at the start of the project.</p>
+                    </div>
+
+                    <div id="ownership" class="legal-section mb-5">
+                        <span class="legal-number">SECTION 02</span>
+                        <h2>Intellectual Property</h2>
+                        <p>Upon receipt of full payment, the client acquires 100% ownership of the final source code and assets. MST Limited retains the right to use the project as part of our digital portfolio unless otherwise agreed in an NDA.</p>
+                    </div>
+
+                    <div id="payments" class="legal-section mb-5">
+                        <span class="legal-number">SECTION 03</span>
+                        <h2>Payment Structure</h2>
+                        <p>Standard engineering starts with a 50% commitment fee. The remaining balance is required upon project completion and prior to final deployment on the client's production server.</p>
+                    </div>
+
+                    <div id="marketing" class="legal-section mb-5">
+                        <span class="legal-number">SECTION 04</span>
+                        <h2>Marketing & Social Proof</h2>
+                        <p>Success stories drive innovation. By partnering with us, you acknowledge and agree to the following:</p>
+                        
+                        <div class="highlight-box">
+                            <h5 class="text-white fw-bold"><i class="fas fa-play-circle me-2 text-cyan"></i> Video Testimonial Clause</h5>
+                            <p class="mb-0 small opacity-75">
+                                Client agrees to provide a short <strong>Video Testimonial</strong> or feedback video upon project delivery. MST Limited reserves the right to use this testimonial, along with the client's logo, for marketing purposes on our official website, social media, and presentations.
+                            </p>
+                        </div>
+                        <p class="small opacity-50 italic"><em>*Exemptions apply only if a pre-existing NDA is in effect.</em></p>
+                    </div>
+
+                    <div id="liability" class="legal-section mb-5">
+                        <span class="legal-number">SECTION 05</span>
+                        <h2>Limitation of Liability</h2>
+                        <p>MST Limited is not liable for indirect or consequential damages, hosting outages, or third-party API disruptions post-handover. Post-deployment support is provided as per the selected maintenance plan.</p>
+                    </div>
+
+                    <div class="text-center mt-5 pt-4 border-top border-secondary opacity-50">
+                        <p>Questions? Email us at <span class="text-cyan">mstprivatelimited@gmail.com</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-elite">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <img src="images/logo-black.jpeg" height="90" class="mb-4" alt="MST Logo">
+                <p class="opacity-75 pe-lg-5">
+                    Architecting high-performance digital ecosystems. We bridge the gap between human logic and AI-driven reality.
+                </p>
+                <div class="registration-badges mt-3">
+                    <span class="badge border border-info text-cyan me-2">SECP REGISTERED</span>
+                    <span class="badge border border-info text-cyan">PSEB CERTIFIED</span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h6 class="fw-bold text-white text-uppercase mb-4" style="letter-spacing: 2px;">Explore</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none hover-cyan">Solutions</a></li>
+                    <li class="mb-2"><a href="portfolio.html" class="text-white-50 text-decoration-none hover-cyan">Case Studies</a></li>
+                    <li class="mb-2"><a href="careers.html" class="text-white-50 text-decoration-none hover-cyan">Join Team</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h6 class="fw-bold text-white text-uppercase mb-4" style="letter-spacing: 2px;">HQ Information</h6>
+                <p class="small text-white-50 mb-1"><i class="fas fa-envelope text-cyan me-2"></i> mstprivatelimited@gmail.com</p>
+                <p class="small text-white-50 mb-1"><i class="fas fa-phone text-cyan me-2"></i> +92 311 3857232</p>
+                <p class="small text-white-50"><i class="fas fa-map-marker-alt text-cyan me-2"></i> Karachi Hub, Pakistan</p>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h6 class="fw-bold text-white text-uppercase mb-4" style="letter-spacing: 2px;">Stay Updated</h6>
+                <div class="social-glow d-flex gap-3">
+                    <a href="https://www.linkedin.com/company/mstprivatelimited/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/mstprivatelimited/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/ranamusab1" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="https://www.tiktok.com/@mstprivatelimited?lang=en" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/share/17hCmhCA5v/" class="social-icon"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5 opacity-10">
+        <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center opacity-50 small">
+            <p>&copy; 2026 MST (Private) Limited. All Rights Reserved.</p>
+            <div class="d-flex gap-4">
+                <a href="privacy.html" class="text-white text-decoration-none">Privacy Policy</a>
+                <a href="terms.html" class="text-white text-decoration-none">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Scrollspy for Side Navigation (Fixed for your sections)
+        const sections = document.querySelectorAll('.legal-section');
+        const navLinks = document.querySelectorAll('.term-step');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 250)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
