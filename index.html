@@ -131,6 +131,7 @@
 }
 
 .client-img {
+    max-height: 80px;          /* mobile pe zyada bara na ho */
     height: 100px;
     width: auto;
     filter: grayscale(1) brightness(0.8);
@@ -176,6 +177,17 @@
 
 .client-box:hover::before {
     opacity: 1;
+}
+
+@media (max-width: 767.98px) {
+    #clients {
+        height: auto !important;
+        padding: 60px 0 !important;
+    }
+
+    .hero {
+        height: 80vh;
+    }
 }
 
         /* --- 7. Modals & Buttons --- */
@@ -241,7 +253,7 @@
         font-style: italic;
         line-height: 1.6;
         color: rgba(255, 255, 255, 0.95) !important;
-        position: relative;
+            position: relative;
         z-index: 1;
     }
 
@@ -261,7 +273,13 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="images/logo-black.jpeg" alt="MST Logo" height="90"></a>
-            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler text-white border-0" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -387,7 +405,7 @@
         </div>
     </section>
 
-<section id="clients" class=" bg-black" style="height: 350px !important;">
+<section id="clients" class="bg-black py-5">   <!-- padding top/bottom add kar diya -->
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="text-cyan text-uppercase fw-bold" style="letter-spacing: 5px; font-size: 0.8rem;">Partners in Innovation</span>
