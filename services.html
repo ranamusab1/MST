@@ -167,28 +167,6 @@
     box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
     transform: translateY(-5px);
 }
-/* Logo height fix - sab pages ke liye same */
-.navbar-brand img {
-    height: 90px !important;
-}
-
-/* Mobile logo chota taake neat lage */
-@media (max-width: 991.98px) {
-    .navbar-brand img {
-        height: 70px !important;
-    }
-
-    /* Mobile menu solid background + no overlap */
-    .navbar-collapse {
-        background: rgba(5, 5, 5, 0.98) !important;  /* dark solid */
-        backdrop-filter: blur(20px);
-        margin-top: 15px;
-        padding: 25px;
-        border-radius: 25px;
-        border: 1px solid rgba(0, 212, 255, 0.2);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-    }
-}
         @media (max-width: 768px) { body { cursor: auto; } #cursor-dot, #cursor-outline { display: none; } .hero { text-align: center; } }
     </style>
 </head>
@@ -347,22 +325,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Mobile menu open hone par navbar ko dark/scrolled banao
-const navbar = document.querySelector('.navbar');
-const navbarCollapse = document.getElementById('navbarNav');
-
-if (navbar && navbarCollapse) {
-    navbarCollapse.addEventListener('show.bs.collapse', function () {
-        navbar.classList.add('scrolled');
-    });
-
-    navbarCollapse.addEventListener('hide.bs.collapse', function () {
-        // Sirf agar scroll top pe hai tabhi transparent karo
-        if (window.scrollY <= 50) {
-            navbar.classList.remove('scrolled');
-        }
-    });
-}
         AOS.init({ duration: 1000, once: true });
 
         // Preloader Fix

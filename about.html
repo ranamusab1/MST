@@ -40,7 +40,7 @@
         #cursor-dot { width: 8px; height: 8px; background: var(--primary-color); position: fixed; border-radius: 50%; z-index: 10001; pointer-events: none; }
         #cursor-outline { width: 40px; height: 40px; border: 2px solid var(--primary-color); position: fixed; border-radius: 50%; z-index: 10000; pointer-events: none; transition: transform 0.1s ease-out; }
 
-        /* Navbar Link Animation */
+/* Navbar Link Animation */
 .nav-link {
     position: relative;
     transition: 0.4s ease;
@@ -74,6 +74,45 @@
     background: rgba(5, 5, 5, 0.7) !important;
     backdrop-filter: blur(25px) saturate(180%);
     border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+@media (max-width: 991.98px) {  /* lg breakpoint se neeche (mobile/tablet) */
+    .navbar-collapse.show + .navbar-toggler,  /* Yeh select karo jab collapse open ho */
+    .navbar-collapse.showing + .navbar-toggler {
+        .navbar {
+            background: rgba(5, 5, 5, 0.7) !important;
+            backdrop-filter: blur(25px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+    }
+}
+/* --- Mobile Excellence Overrides --- */
+@media (max-width: 991.98px) {
+    
+    /* 1. Navbar Mobile Menu Overlap Fix */
+    .navbar-collapse {
+        background: rgba(1, 1, 1, 0.98); /* Solid dark background for menu */
+        backdrop-filter: blur(20px);
+        margin-top: 15px;
+        padding: 25px;
+        border-radius: 25px;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+
+    /* 2. Global Mobile Centering (Review, Footer, Headers) */
+    .testimonial-card, 
+    .footer-minimal, 
+    footer, 
+    #testimonials .text-center,
+    .legal-section {
+        text-align: center !important;
+    }
+
+    /* 6. Hero Section Button Width */
+    .hero .btn {
+        width: 100%; /* Mobile par buttons full width professional lagte hain */
+        margin-bottom: 10px;
+    }
 }
 
         /* --- Hero Section --- */
@@ -185,28 +224,6 @@
     color: var(--primary-color);
     box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
     transform: translateY(-5px);
-}
-/* Logo height fix - sab pages ke liye same */
-.navbar-brand img {
-    height: 90px !important;
-}
-
-/* Mobile logo chota taake neat lage */
-@media (max-width: 991.98px) {
-    .navbar-brand img {
-        height: 70px !important;
-    }
-
-    /* Mobile menu solid background + no overlap */
-    .navbar-collapse {
-        background: rgba(5, 5, 5, 0.98) !important;  /* dark solid */
-        backdrop-filter: blur(20px);
-        margin-top: 15px;
-        padding: 25px;
-        border-radius: 25px;
-        border: 1px solid rgba(0, 212, 255, 0.2);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-    }
 }
         .text-cyan { color: var(--primary-color) !important; }
 
@@ -397,22 +414,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Mobile menu open hone par navbar ko dark/scrolled banao
-const navbar = document.querySelector('.navbar');
-const navbarCollapse = document.getElementById('navbarNav');
-
-if (navbar && navbarCollapse) {
-    navbarCollapse.addEventListener('show.bs.collapse', function () {
-        navbar.classList.add('scrolled');
-    });
-
-    navbarCollapse.addEventListener('hide.bs.collapse', function () {
-        // Sirf agar scroll top pe hai tabhi transparent karo
-        if (window.scrollY <= 50) {
-            navbar.classList.remove('scrolled');
-        }
-    });
-}
         AOS.init({ duration: 1000, once: true });
 
         // Preloader
