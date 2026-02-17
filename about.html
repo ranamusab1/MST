@@ -25,6 +25,7 @@
             color: #FFFFFF;
             overflow-x: hidden;
             cursor: none;
+            padding-top: 90px;          /* desktop pe navbar ~80-90px hota hai */
         }
 
         /* --- Global Elements --- */
@@ -95,6 +96,9 @@
                         radial-gradient(circle at 20% 30%, rgba(30, 58, 138, 0.1) 0%, transparent 30%);
             animation: rotateMesh 20s linear infinite;
             z-index: 1;
+        }
+        .hero-services, .hero-portfolio, .hero-about, .hero-contact, .hero-careers, .terms-header, .hero-header {
+            padding-top: 120px !important;   /* navbar ke neeche space */
         }
         @keyframes rotateMesh { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         #hero-particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
@@ -216,6 +220,10 @@
                 z-index: 1000;
             }
 
+            body {
+                padding-top: 70px;      /* mobile pe navbar thoda chota hota hai */
+            }
+
             .navbar-collapse.show,
             .navbar-collapse.collapsing {
                 background: rgba(5, 5, 5, 0.96) !important;
@@ -232,6 +240,10 @@
             .hero-about {
                 height: 70vh;
                 min-height: 500px;
+            }
+
+            .hero-services, .hero-portfolio, .hero-about, .hero-contact, .hero-careers, .terms-header, .hero-header {
+                padding-top: 100px !important;
             }
 
             .hero-about h1 {
