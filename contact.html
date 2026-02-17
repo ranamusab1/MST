@@ -35,57 +35,52 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.5; /* thoda kam mobile pe performance ke liye */
+            opacity: 0.6;
         }
 
         /* --- Loader & Cursor --- */
-        #loader { 
-            position: fixed; width: 100%; height: 100vh; background: #000; z-index: 99999; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s; 
-        }
-        .loader-logo { font-size: 2rem; font-weight: 800; color: var(--primary-color); letter-spacing: 10px; margin-bottom: 20px; text-transform: uppercase; }
+        #loader { position: fixed; width: 100%; height: 100vh; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s; }
         .progress-bar-wrap { width: 200px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
         .progress-bar-inner { position: absolute; width: 100%; height: 100%; background: var(--primary-color); left: -100%; animation: load 1.5s infinite; }
         @keyframes load { 100% { left: 100%; } }
-
         #cursor-dot { width: 8px; height: 8px; background: var(--primary-color); position: fixed; border-radius: 50%; z-index: 10001; pointer-events: none; }
         #cursor-outline { width: 40px; height: 40px; border: 2px solid var(--primary-color); position: fixed; border-radius: 50%; z-index: 10000; pointer-events: none; transition: transform 0.15s ease-out; }
 
         /* Navbar Link Animation */
-        .nav-link {
-            position: relative;
-            transition: 0.4s ease;
-            color: white !important;
-        }
+.nav-link {
+    position: relative;
+    transition: 0.4s ease;
+    color: white !important;
+}
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            box-shadow: 0 0 10px var(--primary-color);
-            transition: 0.4s ease;
-            transform: translateX(-50%);
-        }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+    transition: 0.4s ease;
+    transform: translateX(-50%);
+}
 
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 80%;
-        }
+.nav-link:hover::after, .nav-link.active::after {
+    width: 80%;
+}
 
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-            text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
-        }
+.nav-link:hover {
+    color: var(--primary-color) !important;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
 
-        /* Glassmorphism Refined */
-        .navbar.scrolled {
-            background: rgba(5, 5, 5, 0.7) !important;
-            backdrop-filter: blur(25px) saturate(180%);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-        }
+/* Glassmorphism Refined */
+.navbar.scrolled {
+    background: rgba(5, 5, 5, 0.7) !important;
+    backdrop-filter: blur(25px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
 
         /* --- Contact Hero --- */
         .hero-contact {
@@ -150,9 +145,9 @@
         .info-item {
             display: flex;
             align-items: center;
-            margin-bottom: 25px;
-            padding: 20px;
-            border-radius: 20px;
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 25px;
             background: rgba(255,255,255,0.02);
             border: 1px solid var(--glass-border);
             transition: 0.4s;
@@ -165,7 +160,7 @@
         .info-icon {
             font-size: 1.8rem;
             color: var(--primary-color);
-            margin-right: 20px;
+            margin-right: 25px;
             filter: drop-shadow(0 0 8px var(--primary-color));
         }
 
@@ -195,170 +190,51 @@
             border: 1px solid var(--glass-border);
             filter: grayscale(1) invert(0.9) contrast(1.2);
             transition: 0.5s;
-            height: 300px;
-        }
-        .map-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
         }
         .map-wrapper:hover { filter: grayscale(0) invert(0); }
 
         .footer-elite {
-            background: radial-gradient(circle at top right, #080808 0%, #000 100%);
-            padding: 100px 0 30px;
-            border-top: 1px solid rgba(0, 212, 255, 0.1);
-        }
-
-        .hover-cyan:hover {
-            color: var(--primary-color) !important;
-            padding-left: 5px;
-            transition: 0.3s ease;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: 0.4s;
-            border: 1px solid transparent;
-        }
-
-        .social-icon:hover {
-            background: rgba(0, 212, 255, 0.1);
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .text-cyan { color: var(--primary-color) !important; }
-
-        @media (max-width: 768px) { 
-            body { cursor: auto; } 
-            #cursor-dot, #cursor-outline { display: none; } 
-        }
-
-        /* ── Mobile Navbar Fix ── */
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                background: rgba(5, 5, 5, 0.96) !important;
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                margin-top: 0.8rem;
-                padding: 1.8rem 1.5rem;
-                border-radius: 1.5rem;
-                border: 1px solid rgba(0, 212, 255, 0.18);
-                box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
-                position: absolute;
-                right: 1rem;
-                left: 1rem;
-                z-index: 1000;
-            }
-
-            .navbar-collapse.show,
-            .navbar-collapse.collapsing {
-                background: rgba(5, 5, 5, 0.96) !important;
-            }
-
-            .navbar-toggler {
-                background: rgba(0, 212, 255, 0.08);
-                border: 1px solid rgba(0, 212, 255, 0.2);
-            }
-        }
-
-        /* ── Hero & Form mobile adjustments ── */
-        @media (max-width: 767.98px) {
-            .hero-contact {
-                padding: 140px 0 80px;
-            }
-
-            .hero-contact h1.display-2 {
-                font-size: clamp(2.5rem, 9vw, 4rem);
-                line-height: 1.1;
-            }
-
-            .glass-card {
-                padding: 35px 25px;
-            }
-
-            .input-group-custom {
-                margin-bottom: 25px;
-            }
-
-            .btn-launch {
-                padding: 15px;
-                font-size: 1rem;
-            }
-
-            .info-item {
-                padding: 18px;
-                margin-bottom: 20px;
-            }
-
-            .info-icon {
-                font-size: 1.6rem;
-                margin-right: 15px;
-            }
-
-            .map-wrapper {
-                height: 250px;
-                margin-top: 30px;
-            }
-
-            .section.pb-5 {
-                padding-bottom: 60px !important;
-            }
-        }
-
-        /* ── General mobile centering & text ── */
-        @media (max-width: 991.98px) {
-            .text-center-mobile {
-                text-align: center !important;
-            }
-
-            h1.display-2 {
-                font-size: 3rem !important;
-            }
-
-            .lead, p.small {
-                font-size: 1rem;
-            }
-        }
-
-        body {
-    padding-top: 90px !important;
+    background: radial-gradient(circle at top right, #080808 0%, #000 100%);
+    padding: 100px 0 30px;
+    border-top: 1px solid rgba(0, 212, 255, 0.1);
 }
 
-@media (max-width: 991.98px) {
-    body {
-        padding-top: 70px !important;
-    }
+.hover-cyan:hover {
+    color: var(--primary-color) !important;
+    padding-left: 5px;
+    transition: 0.3s ease;
 }
 
-/* Ya phir spacer use karna chahe to */
-.navbar-spacer {
-    height: 90px;
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: 0.4s;
+    border: 1px solid transparent;
 }
-@media (max-width: 991.98px) {
-    .navbar-spacer {
-        height: 70px;
-    }
+
+.social-icon:hover {
+    background: rgba(0, 212, 255, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    transform: translateY(-5px);
 }
+        @media (max-width: 768px) { body { cursor: auto; } #cursor-dot, #cursor-outline { display: none; } .hero { text-align: center; } }
+        .text-cyan { color: var(--primary-color); }
     </style>
 </head>
 <body>
-<div class="navbar-spacer"></div>
 
     <canvas id="bg-canvas"></canvas>
 
     <div id="loader">
-        <div class="loader-logo">MST (PRIVATE) LIMITED</div>
+        <div class="loader-logo" style="font-size: 1.5rem; font-weight: 800; color: #00d4ff; letter-spacing: 10px;">MST (PRIVATE) LIMITED</div>
         <div class="progress-bar-wrap"><div class="progress-bar-inner"></div></div>
     </div>
 
@@ -367,9 +243,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logo-black.jpeg" alt="MST Logo" height="90" class="d-inline-block align-top">
-            </a>
+            <a class="navbar-brand" href="#"><img src="images/logo-black.jpeg" alt="MST Logo" height="50"></a>
             <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fas fa-bars"></i>
             </button>
@@ -419,7 +293,7 @@
                         </div>
                     </div>
                     <div class="map-wrapper mt-4">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.664398404754!2d67.17060667358234!3d24.875309244666614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4f7cec966dfc76e7%3A0xde0f2513942c18ab!2sMST%20(Private)%20Limited!5e0!3m2!1sen!2s!4v1767987389101!5m2!1sen!2s" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.664398404754!2d67.17060667358234!3d24.875309244666614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4f7cec966dfc76e7%3A0xde0f2513942c18ab!2sMST%20(Private)%20Limited!5e0!3m2!1sen!2s!4v1767987389101!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
 
@@ -436,7 +310,7 @@
                                 <label class="form-label-custom">Email Address</label>
                             </div>
                             <div class="input-group-custom">
-                                <textarea name="message" class="form-control" rows="5" required></textarea>
+                                <textarea name="message" class="form-control" rows="4" required></textarea>
                                 <label class="form-label-custom">Project Brief</label>
                             </div>
                             <button type="submit" class="btn btn-launch">
@@ -451,61 +325,59 @@
     </section>
 
     <footer class="footer-elite">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <img src="images/logo-black.jpeg" height="90" class="mb-4" alt="MST Logo">
-                    <p class="opacity-75 pe-lg-5">
-                        Architecting high-performance digital ecosystems. We bridge the gap between human logic and AI-driven reality.
-                    </p>
-                    <div class="registration-badges mt-3">
-                        <span class="badge border border-info text-cyan me-2">SECP REGISTERED</span>
-                        <span class="badge border border-info text-cyan">PSEB CERTIFIED</span>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-6">
-                    <h6 class="fw-bold text-white text-uppercase mb-4" style="letter-spacing: 2px;">Explore</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none hover-cyan">Solutions</a></li>
-                        <li class="mb-2"><a href="portfolio.html" class="text-white-50 text-decoration-none hover-cyan">Case Studies</a></li>
-                        <li class="mb-2"><a href="careers.html" class="text-white-50 text-decoration-none hover-cyan">Join Team</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <h6 class="fw-bold text-white text-uppercase mb-4" style="letter-spacing: 2px;">HQ Information</h6>
-                    <p class="small text-white-50 mb-1"><i class="fas fa-envelope text-cyan me-2"></i> mstprivatelimited@gmail.com</p>
-                    <p class="small text-white-50 mb-1"><i class="fas fa-phone text-cyan me-2"></i> +92 311 3857232</p>
-                    <p class="small text-white-50"><i class="fas fa-map-marker-alt text-cyan me-2"></i> Karachi Hub, Pakistan</p>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <h6 class="fw-bold text-white text-uppercase mb-4" style="letter-spacing: 2px;">Stay Updated</h6>
-                    <div class="social-glow d-flex gap-3">
-                        <a href="https://www.linkedin.com/company/mstprivatelimited/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/mstprivatelimited/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://github.com/ranamusab1" class="social-icon"><i class="fab fa-github"></i></a>
-                        <a href="https://www.tiktok.com/@mstprivatelimited?lang=en" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.facebook.com/share/17hCmhCA5v/" class="social-icon"><i class="fab fa-facebook"></i></a>
-                    </div>
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <img src="images/logo-black.jpeg" height="90" class="mb-4" alt="MST Logo">
+                <p class="opacity-75 pe-lg-5">
+                    Architecting high-performance digital ecosystems. We bridge the gap between human logic and AI-driven reality.
+                </p>
+                <div class="registration-badges mt-3">
+                    <span class="badge border border-info text-cyan me-2">SECP REGISTERED</span>
+                    <span class="badge border border-info text-cyan">PSEB CERTIFIED</span>
                 </div>
             </div>
 
-            <hr class="my-5 opacity-10">
-            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center opacity-50 small">
-                <p>&copy; 2026 MST (Private) Limited. All Rights Reserved.</p>
-                <div class="d-flex gap-4">
-                    <a href="privacy.html" class="text-white text-decoration-none">Privacy Policy</a>
-                    <a href="terms.html" class="text-white text-decoration-none">Terms of Service</a>
+            <div class="col-lg-2 col-md-6">
+                <h6 class="fw-bold text-white text-uppercase mb-4" style="letter-spacing: 2px;">Explore</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none hover-cyan">Solutions</a></li>
+                    <li class="mb-2"><a href="portfolio.html" class="text-white-50 text-decoration-none hover-cyan">Case Studies</a></li>
+                    <li class="mb-2"><a href="careers.html" class="text-white-50 text-decoration-none hover-cyan">Join Team</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h6 class="fw-bold text-white text-uppercase mb-4" style="letter-spacing: 2px;">HQ Information</h6>
+                <p class="small text-white-50 mb-1"><i class="fas fa-envelope text-cyan me-2"></i> mstprivatelimited@gmail.com</p>
+                <p class="small text-white-50 mb-1"><i class="fas fa-phone text-cyan me-2"></i> +92 311 3857232</p>
+                <p class="small text-white-50"><i class="fas fa-map-marker-alt text-cyan me-2"></i> Karachi Hub, Pakistan</p>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h6 class="fw-bold text-white text-uppercase mb-4" style="letter-spacing: 2px;">Stay Updated</h6>
+                <div class="social-glow d-flex gap-3">
+                    <a href="https://www.linkedin.com/company/mstprivatelimited/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/mstprivatelimited/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/ranamusab1" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="https://www.tiktok.com/@mstprivatelimited?lang=en" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/share/17hCmhCA5v/" class="social-icon"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <hr class="my-5 opacity-10">
+        <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center opacity-50 small">
+            <p>&copy; 2026 MST (Private) Limited. All Rights Reserved.</p>
+            <div class="d-flex gap-4">
+                <a href="privacy.html" class="text-white text-decoration-none">Privacy Policy</a>
+                <a href="terms.html" class="text-white text-decoration-none">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <script>
         AOS.init({ duration: 1200, once: true });
 
@@ -562,25 +434,10 @@
         }
         init(); animate();
 
-        // Navbar Scroll
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.navbar');
-            if (window.scrollY > 50) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
-        });
-
-        // Mobile navbar bg fix on open
-        const navbarCollapse = document.getElementById('navbarNav');
-        const navbar = document.querySelector('.navbar');
-
-        navbarCollapse.addEventListener('show.bs.collapse', function () {
-            navbar.classList.add('scrolled');
-        });
-
-        navbarCollapse.addEventListener('hide.bs.collapse', function () {
-            if (window.scrollY <= 50) {
-                navbar.classList.remove('scrolled');
-            }
+        const nav = document.querySelector('.navbar');
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
         });
 
         // Custom Cursor
