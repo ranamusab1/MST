@@ -265,6 +265,72 @@
     }
 
     .text-cyan { color: #00d4ff !important; }
+
+    /* --- Mobile Excellence Overrides --- */
+@media (max-width: 991.98px) {
+    
+    /* 1. Navbar Mobile Menu Overlap Fix */
+    .navbar-collapse {
+        background: rgba(1, 1, 1, 0.98); /* Solid dark background for menu */
+        backdrop-filter: blur(20px);
+        margin-top: 15px;
+        padding: 25px;
+        border-radius: 25px;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+
+    /* 2. Global Mobile Centering (Review, Footer, Headers) */
+    .testimonial-card, 
+    .footer-minimal, 
+    footer, 
+    #testimonials .text-center,
+    .legal-section {
+        text-align: center !important;
+    }
+
+    /* 3. Testimonial Avatar & Meta Center Fix */
+    .client-meta {
+        flex-direction: column !important; /* Image upar, text niche */
+        align-items: center !important;
+        text-align: center;
+    }
+
+    .client-meta .avatar {
+        margin-right: 0 !important;
+        margin-bottom: 15px;
+    }
+
+    /* 4. Review Font Size Adjustment for Mobile */
+    .testimonial-text {
+        font-size: 1.1rem !important; /* Mobile par font bohot bara na ho */
+        line-height: 1.5;
+    }
+
+    .quote-bg {
+        font-size: 8rem; /* Mobile par quote symbol chota */
+        right: 20px;
+    }
+
+    /* 5. Client Logos Grid for Mobile */
+    #clients .row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Mobile par 2-2 logos ki line */
+        gap: 20px;
+        align-items: center;
+    }
+
+    .client-img {
+        max-height: 50px; /* Logos aur chote taake neat lagein */
+        margin: 0 auto;
+    }
+
+    /* 6. Hero Section Button Width */
+    .hero .btn {
+        width: 100%; /* Mobile par buttons full width professional lagte hain */
+        margin-bottom: 10px;
+    }
+}
     </style>
 </head>
 <body>
